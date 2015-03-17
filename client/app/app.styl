@@ -42,15 +42,17 @@ section
 
 
 md-card
-  
+
+  max-width: 800px
+  margin 0 auto  
   transition all 0.5 linear
   
   .votes
     float right
     
-  &.upvoted
-    background-color green
+  &.upvoted .votes
+    color green
     
-  &.downvoted
-    background-color red
+  &.downvoted .votes
+    color red
     
