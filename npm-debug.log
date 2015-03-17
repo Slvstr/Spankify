@@ -1,0 +1,93 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'glup-nodemon',
+1 verbose cli   '--save-dev' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'glup-nodemon', null ]
+6 verbose cache add name=undefined spec="glup-nodemon" args=["glup-nodemon",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'glup-nodemon',
+7 verbose parsed url   path: 'glup-nodemon',
+7 verbose parsed url   href: 'glup-nodemon' }
+8 silly lockFile 4094d6c3-glup-nodemon glup-nodemon
+9 verbose lock glup-nodemon /Users/Erik/.npm/4094d6c3-glup-nodemon.lock
+10 silly lockFile 4094d6c3-glup-nodemon glup-nodemon
+11 silly lockFile 4094d6c3-glup-nodemon glup-nodemon
+12 verbose addNamed [ 'glup-nodemon', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 57b466dc-glup-nodemon glup-nodemon@
+15 verbose lock glup-nodemon@ /Users/Erik/.npm/57b466dc-glup-nodemon.lock
+16 silly addNameRange { name: 'glup-nodemon', range: '*', hasData: false }
+17 verbose request where is /glup-nodemon
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 6f975e68623e97d3
+20 verbose url raw /glup-nodemon
+21 verbose url resolving [ 'https://registry.npmjs.org/', './glup-nodemon' ]
+22 verbose url resolved https://registry.npmjs.org/glup-nodemon
+23 verbose request where is https://registry.npmjs.org/glup-nodemon
+24 info trying registry request attempt 1 at 18:46:16
+25 http GET https://registry.npmjs.org/glup-nodemon
+26 http 404 https://registry.npmjs.org/glup-nodemon
+27 verbose headers { date: 'Tue, 10 Mar 2015 23:46:17 GMT',
+27 verbose headers   server: 'Apache',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '29',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   'x-served-by': 'cache-dfw1832-DFW',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1426031177.136980,VS0,VE256',
+27 verbose headers   'keep-alive': 'timeout=10, max=50',
+27 verbose headers   connection: 'Keep-Alive' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { date: 'Tue, 10 Mar 2015 23:46:17 GMT',
+28 silly registry.get     server: 'Apache',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '29',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     'x-served-by': 'cache-dfw1832-DFW',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1426031177.136980,VS0,VE256',
+28 silly registry.get     'keep-alive': 'timeout=10, max=50',
+28 silly registry.get     connection: 'Keep-Alive' } ]
+29 silly lockFile 57b466dc-glup-nodemon glup-nodemon@
+30 silly lockFile 57b466dc-glup-nodemon glup-nodemon@
+31 error Error: Package not found : glup-nodemon
+31 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:308:14)
+31 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:246:65)
+31 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:236:22)
+31 error     at Request.emit (events.js:98:17)
+31 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+31 error     at Request.emit (events.js:117:20)
+31 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+31 error     at IncomingMessage.emit (events.js:117:20)
+31 error     at _stream_readable.js:943:16
+31 error     at process._tickCallback (node.js:419:13)
+32 error If you need help, you may report this *entire* log,
+32 error including the npm and node versions, at:
+32 error     <http://github.com/npm/npm/issues>
+33 error System Darwin 14.0.0
+34 error command "node" "/usr/local/bin/npm" "install" "glup-nodemon" "--save-dev"
+35 error cwd /Users/Erik/Documents/Projects/Spankify
+36 error node -v v0.10.33
+37 error npm -v 1.4.28
+38 verbose exit [ 1, true ]

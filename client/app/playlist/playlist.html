@@ -1,0 +1,12 @@
+<md-content>
+  <md-list>
+    <md-card class="song" ng-repeat="song in playlist.songs | orderBy: '-votes'" md-swipe-right="playlist.upVote(song, $index)" md-swipe-left="playlist.removeVote(song)" ng-class="{upvoted: playlist.userUpvoted(song), downvoted: playlist.userDownvoted(song)}">
+      <div class="md-tile-content">
+        <h3>{{song.title}}</h3>
+        <h4>{{song.artist}}</h4>
+        <span class="votes">{{song.votes}}</span>
+       </div>
+
+    </md-item>
+  </md-list>
+</md-content>
