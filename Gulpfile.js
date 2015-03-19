@@ -52,6 +52,13 @@ gulp.task('vendor', ['stylus'], function() {
             .pipe(dest);
 });
 
+gulp.task('icons', ['clean'], function() {
+  var src = gulp.src(['./client/assets/icons/*/svg/design/*.svg', '!./client/assets/icons/*.html']);
+  var dest = gulp.dest('./build/assets/icons');
+
+  return src.pipe(dest);
+});
+
 
 
 gulp.task('inject', ['stylus', 'js:dev', 'vendor', 'html'], function() {
@@ -85,7 +92,7 @@ gulp.task('inject', ['stylus', 'js:dev', 'vendor', 'html'], function() {
 gulp.task('clean', del.bind(null, ['build']));
 
 
-gulp.task('server', ['inject'], function() {
+gulp.task('server', ['inject', 'icons'], function() {
   $.livereload.listen();
   $.nodemon({
           script: './server/index.js',
@@ -100,14 +107,14 @@ gulp.task('server', ['inject'], function() {
             'build/**/*',
             'logs/**/*',
             'node_modules/**/*',
-            '/client/**/*',
+            'client/**/*',
           ]
         });
 });
 
 
 
-gulp.task('default', ['clean', 'html', 'inject', 'server'], function() {
+gulp.task('default', ['clean', 'html', 'icons', 'inject', 'server'], function() {
   $.util.log($.util.colors.underline.red('You should see me'));
   return $.livereload.listen();
 });

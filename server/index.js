@@ -6,9 +6,9 @@ var chalk = require('chalk');
 var rootDir = path.normalize(__dirname + '/..');
 
 
-app.use(express.static(rootDir));
 app.use(express.static(rootDir + '/build/app'));
-// app.use(express.static(__dirname + '/client'));
+app.use(express.static(rootDir + '/build'));
+app.use(express.static(rootDir));
 
 app.get('/', function(req, res) {
   res.sendFile(rootDir + '/build/index.html');

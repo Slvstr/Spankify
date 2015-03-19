@@ -2,3 +2,5 @@ build
 node_modules
 client/vendor
 *.NS_Store
+*.DS_Store
+client/assets/icons
