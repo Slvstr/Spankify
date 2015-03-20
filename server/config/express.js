@@ -3,6 +3,10 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var cors = require('cors');
 var path = require('path');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
+var EXPRESS_SECRET = 'express session secret';
 
 
 module.exports = function(app) {
@@ -15,6 +19,14 @@ module.exports = function(app) {
   app.use(express.static(rootDir + '/build/app'));
   app.use(express.static(rootDir + '/build'));
   app.use(express.static(rootDir));
+
+
+
+  /******************************************************************************
+   * Auth Config
+   *****************************************************************************/
+   app.use(cookieParser());
+   app.use(session({secret: EXPRESS_SECRET}));
 
 
   /******************************************************************************
