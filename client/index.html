@@ -14,21 +14,38 @@
     <!-- app:css -->
     <!-- endinject -->
   </head>
-  <body>
+  <body ng-controller="appCtrl as app">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <header>
-      <md-toolbar class="md-primary">
-        <h1 ui-sref="/home">Spankify</h1>
-        <h1 ui-sref="/login">Sign In</h1>
+      <md-toolbar class="md-primary" layout="row">
+        <div flex="40" layout="row"><md-icon md-svg-src="build/assets/icons/navigation/svg/design/ic_menu_48px.svg" ng-click="app.toggleNav()"></md-icon></div>
+        <div flex="50" layout="row"><h1 ui-sref="/home">Spankify</h1></div>
       </md-toolbar>
     </header>
 
-    <md-button ui-sref="/playlist">Show Playlist</md-button>
+    
+    <md-sidenav class="md-sidenav-left" md-component-id="left">
+      <md-toolbar class="md-theme-light" layout="row">
+        <md-icon md-svg-src="build/assets/icons/navigation/svg/design/ic_menu_48px.svg" ng-click="app.toggleNav()" flex="33"></md-icon>
+        <h1 class="md-toolbar-tools">Options</h1>
+      </md-toolbar>
+      <md-content ng-controller="navCtrl" class="md-padding">
+        <md-list layout="column">
+          <md-item ui-sref="/login" ng-click="app.toggleNav()">
+            <md-item-content><div class="md-tile-content">Sign In</div></md-item-content>
+          </md-item>
+          <md-divider></md-divider>
+          <md-item ui-sref="/playlist" ng-click="app.toggleNav()">
+            <md-item-content><div class="md-tile-content">Playlist</div></md-item-content>
+          </md-item>
+          <md-divider></md-divider>
+        </md-list>
+      </md-content>
+    </md-sidenav>
 
-    <div ui-view></div>
-
+    <div ui-view class="app"></div>
 
     <!-- vendor:js -->
     <!-- endinject -->
