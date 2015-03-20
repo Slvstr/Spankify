@@ -4,9 +4,27 @@ var morgan = require('morgan');
 var cors = require('cors');
 
 
-var rootDir = app.get('rootDir');
+module.exports = function(app) {
+
+  /******************************************************************************
+   * Static Routes
+   *****************************************************************************/
+  var rootDir = app.get('rootDir');
+  app.use(express.static(rootDir + '/build/app'));
+  app.use(express.static(rootDir + '/build'));
+  app.use(express.static(rootDir));
 
 
-app.use(express.static(rootDir + '/build/app'));
-app.use(express.static(rootDir + '/build'));
-app.use(express.static(rootDir));
+  /******************************************************************************
+   * ADD CORS Headers
+   *****************************************************************************/
+   app.use(cors());
+
+
+   /******************************************************************************
+    * Parse JSON POST requests
+    *****************************************************************************/
+    app.use(bodyParser.urlencoded({extended: false}));
+  
+};
+

@@ -3,18 +3,23 @@ var app = express();
 var path = require('path');
 var chalk = require('chalk');
 
+
+// Configure Express
+require('./config/express')(app);
+
+
+// Set root directory app variable
 app.set('rootDir', path.normalize(__dirname + '/..'));
 var rootDir = app.get('rootDir');
 
 
-app.use(express.static(rootDir + '/build/app');
-app.use(express.static(rootDir + '/build'));
-app.use(express.static(rootDir));
 
 app.get('/', function(req, res) {
   res.sendFile(rootDir + '/build/index.html');
 });
 
+
+// Unhandled request --> Redirect to index route
 app.use(function(req, res) {
   res.redirect('/');
 });
