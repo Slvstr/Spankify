@@ -3,10 +3,11 @@ var app = express();
 var path = require('path');
 var chalk = require('chalk');
 
-var rootDir = path.normalize(__dirname + '/..');
+app.set('rootDir', path.normalize(__dirname + '/..'));
+var rootDir = app.get('rootDir');
 
 
-app.use(express.static(rootDir + '/build/app'));
+app.use(express.static(rootDir + '/build/app');
 app.use(express.static(rootDir + '/build'));
 app.use(express.static(rootDir));
 
