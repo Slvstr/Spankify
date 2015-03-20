@@ -21,3 +21,5 @@ router.use('/user', require('./user'));
 router.use(function(req, res) {
   res.redirect('/');
 });
+
+module.exports = router;

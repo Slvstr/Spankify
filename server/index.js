@@ -8,7 +8,7 @@ var chalk = require('chalk');
 require('./config/express')(app);
 
 // Delegate to router
-var router = require('./api');
+var router = require('./api/index');
 app.use(router);
 
 
