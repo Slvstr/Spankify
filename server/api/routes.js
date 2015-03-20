@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 
 
 // Users Route 
-router.use('/user', require('./user'));
+router.use('/user', require('./user/user'));
 
 
 // Unhandled request --> Redirect to index route

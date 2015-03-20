@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var cors = require('cors');
+var path = require('path');
 
 
 module.exports = function(app) {
@@ -9,6 +10,7 @@ module.exports = function(app) {
   /******************************************************************************
    * Static Routes
    *****************************************************************************/
+  app.set('rootDir', path.normalize(__dirname + '/../..'));
   var rootDir = app.get('rootDir');
   app.use(express.static(rootDir + '/build/app'));
   app.use(express.static(rootDir + '/build'));
