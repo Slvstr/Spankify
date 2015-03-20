@@ -3,6 +3,10 @@ var app = express();
 var path = require('path');
 var chalk = require('chalk');
 
+// Connect to Database
+var mongoose = require('mongoose');
+var dbConfig = require('./config/db.js');
+mongoose.connect(dbConfig.url);
 
 // Configure Express
 require('./config/express')(app);
