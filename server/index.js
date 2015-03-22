@@ -12,7 +12,7 @@ mongoose.connect(dbConfig.url);
 require('./config/express')(app);
 
 // Delegate to router
-var router = require('./api/routes');
+var router = require('./routes');
 app.use(router);
 
 

@@ -1,38 +1,29 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var cors = require('cors');
-var path = require('path');
+var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
 
-var EXPRESS_SECRET = 'express session secret';
+var cors = require('cors');
+var session = require('express-session');
+var passport = require('passport');
+// var jwt = require('jsonwebtoken');
+
+var config = require('./environment');
 
 
 module.exports = function(app) {
 
   /******************************************************************************
-   * Static Routes
-   *****************************************************************************/
-  app.set('rootDir', path.normalize(__dirname + '/../..'));
-  var rootDir = app.get('rootDir');
-  app.use(express.static(rootDir + '/build/app'));
-  app.use(express.static(rootDir + '/build'));
-  app.use(express.static(rootDir));
-
-
-
-  /******************************************************************************
    * Auth Config
    *****************************************************************************/
    app.use(cookieParser());
-   app.use(session({secret: EXPRESS_SECRET}));
 
+   // Start up passport
+   app.use(passport.initialize());
 
-  /******************************************************************************
-   * ADD CORS Headers
-   *****************************************************************************/
+   // Add CORS headers
    app.use(cors());
+
 
 
    /******************************************************************************
