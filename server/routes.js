@@ -29,10 +29,6 @@ router.use('/auth', require('./auth'));
 // Users Route 
 router.use('/api/user', require('./api/user/user.js'));
 
-router.get('/login', function(req, res, next) {
-  res.send('first facebook failed')
-});
-
 
 router.get('/fail', function(req, res, next) {
   res.send('second facebook failed')

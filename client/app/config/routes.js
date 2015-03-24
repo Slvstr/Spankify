@@ -22,7 +22,7 @@ angular.module('spankify')
         templateUrl: './playlist/playlist.html',
         controller: 'playlistCtrl',
         controllerAs: 'playlist',
-        authenicate: true
+        authenticate: true
 
       });
 

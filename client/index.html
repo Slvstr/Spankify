@@ -20,8 +20,11 @@
     <![endif]-->
     <header>
       <md-toolbar class="md-primary" layout="row">
-        <div flex="40" layout="row"><md-icon md-svg-src="build/assets/icons/navigation/svg/design/ic_menu_48px.svg" ng-click="app.toggleNav()"></md-icon></div>
-        <div flex="50" layout="row"><h1 ui-sref="/home">Spankify</h1></div>
+        <div flex="20" layout="row"><md-icon md-svg-src="build/assets/icons/navigation/svg/design/ic_menu_48px.svg" ng-click="app.toggleNav()"></md-icon></div>
+        <div flex layout="row"><h1 ui-sref="/home">Spankify</h1></div>
+        <div flex="20" layout="row" ng-show="!!app.currentUser">
+          <img class="profile-pic" ng-src="//graph.facebook.com/{{app.currentUser.facebook.id}}/picture">
+        </div>
       </md-toolbar>
     </header>
 
