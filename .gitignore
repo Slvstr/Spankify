@@ -4,3 +4,4 @@ client/vendor
 *.NS_Store
 *.DS_Store
 client/assets/icons
+.config/environment

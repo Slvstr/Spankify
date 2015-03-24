@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var config = require('./config');
+var config = require('./config/environment');
 
 
 
@@ -27,7 +27,16 @@ router.use('/auth', require('./auth'));
 
 
 // Users Route 
-router.use('/api/user', require('./user/user'));
+router.use('/api/user', require('./api/user/user.js'));
+
+router.get('/login', function(req, res, next) {
+  res.send('first facebook failed')
+});
+
+
+router.get('/fail', function(req, res, next) {
+  res.send('second facebook failed')
+})
 
 
 // Unhandled request --> Redirect to index route

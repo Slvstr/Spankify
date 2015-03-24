@@ -21,7 +21,7 @@ module.exports.setup = function (User, config) {
           user = new User({
             name: profile.displayName,
             email: profile.emails[0].value,
-            role: 'voter',
+            role: 'voter', // Anyone logging in through facebook is a voter.  Admin uses spotify.
             username: profile.username,
             provider: 'facebook',
             facebook: profile._json

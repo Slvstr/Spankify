@@ -1,13 +1,14 @@
 angular.module('spankify')
-  .controller('playlistCtrl', function(Playlist, User, $scope) {
+  .controller('playlistCtrl', function(Playlist, User, $http) {
 
     this.songs = Playlist.getPlaylist();
 
-    this.upVote = function(song, index, scope) {
+    this.upVote = function(song, index) {
       song.votes++;
       song.voters[User.username] = 1;
 
     };
+
 
     this.removeVote = function(song) {
       song.votes--;
@@ -26,6 +27,15 @@ angular.module('spankify')
 
     this.userDownvoted = function(song) {
       return song.voters[User.username] < 0;
+    };
+
+
+    this.showUserInfo = function() {
+      var self = this;
+      console.log('calling user api');
+      $http.get('/api/user/me').then(function(response) {
+        self.currentUser = response.data;
+      });
     };
 
     

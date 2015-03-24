@@ -19,7 +19,7 @@ var userSchema = new Schema({
 
 
 // Non-sensitive info we'll be putting in the token
-UserSchema
+userSchema
   .virtual('token')
   .get(function() {
     return {

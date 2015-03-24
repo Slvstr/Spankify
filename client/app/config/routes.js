@@ -12,7 +12,7 @@ angular.module('spankify')
 
       .state('/login', {
         url: '/login',
-        templateUrl: './login/login.html',
+        templateUrl: './components/auth/login/login.html',
         controller: 'loginCtrl',
         controllerAs: 'login'
       })
@@ -21,8 +21,20 @@ angular.module('spankify')
         url: '/playlist/:id',
         templateUrl: './playlist/playlist.html',
         controller: 'playlistCtrl',
-        controllerAs: 'playlist'
+        controllerAs: 'playlist',
+        authenicate: true
 
       });
 
+  })
+
+  .run(function ($rootScope, $location, Auth) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+      Auth.isLoggedInAsync(function(loggedIn) {
+        if (next.authenticate && !loggedIn) {
+          $location.path('/login');
+        }
+      });
+    });
   });

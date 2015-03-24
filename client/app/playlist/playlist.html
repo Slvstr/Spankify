@@ -1,12 +1,24 @@
 <md-content>
+  
+  <md-button class="md-accent" ng-click="playlist.showUserInfo()">Get User Info</md-button>
+  <md-card>
+
+    <p ng-show="!playlist.currentUser">No user information to show</p>
+
+    {{playlist.currentUser.name}}
+    {{playlist.currentUser.facebook.email}}
+    {{playlist.currentUser.role}}
+
+  </md-card>
+
   <md-list>
     <md-card class="song" ng-repeat="song in playlist.songs | orderBy: '-votes'" md-swipe-right="playlist.upVote(song, $index)" md-swipe-left="playlist.removeVote(song)" ng-class="{upvoted: playlist.userUpvoted(song), downvoted: playlist.userDownvoted(song)}">
       <div class="md-tile-content">
         <h3>{{song.title}}</h3>
         <h4>{{song.artist}}</h4>
         <span class="votes">{{song.votes}}</span>
-       </div>
+      </div>
 
-    </md-item>
+    </md-card>
   </md-list>
 </md-content>

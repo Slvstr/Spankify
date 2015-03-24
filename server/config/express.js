@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 var cors = require('cors');
-var session = require('express-session');
 var passport = require('passport');
 // var jwt = require('jsonwebtoken');
 
