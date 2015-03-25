@@ -1,9 +1,36 @@
 /******************************************************************************
  * Controller for playlists
+
  * Handles both conventional http requests for uploading playlists
  * from the admin client and socket events from the voters
+
+ * Handle ending the playlist while clients are connected (redirect them somewhere?) or
+ * maybe just send a message notifying them and let angular logic redirect.  
+
  *****************************************************************************/
 
+
+// module.exports = function(io) {
+//   return {
+//     router: router,
+//     socket: socket
+//   }
+
+//   ...
+// }
+
+/******************************************************************************
+ * Ideas
+
+* Use socket.io namespaces created for each playlist/:id ?
+
+* Client connects to a specific namespace when the user selects
+* an event/playlist.  On conncetion we send back the current state of the playlist
+
+* Or just go all out with socket.io.  Have new playlists send a create message
+* with the playlist data that we broadcast out to all clients.  
+
+ *****************************************************************************/
 
 (function() {
   'use strict';
