@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var config = require('./config/environment');
 var chalk = require('chalk');
 
 // Connect to Database
@@ -16,6 +17,6 @@ var router = require('./routes');
 app.use(router);
 
 
-var port = process.env.port || 9000;
+var port = config.port;
 chalk.underline.blue('Server listening on port ' + port);
 app.listen(port);

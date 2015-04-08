@@ -1,9 +1,11 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var chalk = require('chalk');
 var bowerFiles = require('main-bower-files');
 var del = require('del');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
+var config = require('./server/config/environment');
 
 
 
@@ -12,14 +14,13 @@ gulp.task('js:dev', ['clean'], function() {
   var source = gulp.src('./client/app/**/*.js');
   var dest = gulp.dest('./build/app');
 
-  return source.pipe($.angularFilesort()).pipe(dest).pipe($.livereload());
+  return source.pipe($.angularFilesort()).pipe(dest).pipe(reload({stream: true}));
 });
 
 
 gulp.task('html', ['clean'], function() {
   return gulp.src('./client/**/*.html')
-              .pipe(gulp.dest('./build'))
-              .pipe($.livereload());
+              .pipe(gulp.dest('./build'));
 });
 
 
@@ -27,7 +28,7 @@ gulp.task('stylus', ['clean'], function() {
   return gulp.src('./client/app/**/*.styl')
               .pipe($.stylus())
               .pipe(gulp.dest('./build/app'))
-              .pipe($.livereload());
+              .pipe(reload({stream: true}));
 });
 
 
@@ -49,7 +50,8 @@ gulp.task('vendor', ['stylus'], function() {
             .pipe($.csso())
             .pipe(cssFilter.restore())
 
-            .pipe(dest);
+            .pipe(dest)
+            .pipe(reload({stream: true}));
 });
 
 gulp.task('icons', ['clean'], function() {
@@ -78,22 +80,16 @@ gulp.task('inject', ['stylus', 'js:dev', 'vendor', 'html'], function() {
                .pipe($.inject(vendorJS, {name: 'vendor'}))
                .pipe($.inject(appCSS, {name: 'app'}))
                .pipe($.inject(appJS, {name: 'app'}))
-               .pipe(dest)
-               .pipe($.livereload());
+               .pipe(dest);
 
 });
 
-// gulp.task('watch', function() {
-//   $.livereload();
-//   $.livereload.listen();
-//   // gulp.watch('./')
-// });
 
 gulp.task('clean', del.bind(null, ['build']));
 
 
 gulp.task('server', ['inject', 'icons'], function() {
-  $.livereload.listen();
+
   $.nodemon({
           script: './server/index.js',
           env: { NODE_ENV: 'development' },
@@ -103,18 +99,36 @@ gulp.task('server', ['inject', 'icons'], function() {
            * files in order to prevent server reload on the file changes that
            * don't affect the server.
            */
+           watch: [
+            'server/'
+           ],
           ignore: [
             'build/**/*',
-            'logs/**/*',
             'node_modules/**/*',
             'client/**/*',
           ]
         });
+
 });
 
 
 
-gulp.task('default', ['clean', 'html', 'icons', 'inject', 'server'], function() {
+
+gulp.task('watch', ['server'], function() {
+
+  browserSync({
+    proxy: 'localhost:' + config.port
+  });
+
+  gulp.watch('client/**/*.js', ['js:dev']);
+  gulp.watch('client/index.html').on('change', reload);
+  gulp.watch('client/**/*.styl', ['stylus']);
+
+});
+
+
+
+gulp.task('default', ['clean', 'html', 'icons', 'inject', 'server', 'watch'], function() {
   $.util.log($.util.colors.underline.red('You should see me'));
-  return $.livereload.listen();
+  return;
 });
