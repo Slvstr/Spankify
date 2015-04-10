@@ -30,6 +30,10 @@
 * Or just go all out with socket.io.  Have new playlists send a create message
 * with the playlist data that we broadcast out to all clients.  
 
+
+* Need to send info about who made the request... send the song upject up?  
+* That should contain an array of voters
+
  *****************************************************************************/
 
 (function() {
