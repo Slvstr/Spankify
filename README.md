@@ -1,4 +1,6 @@
 # Spankify
+## Spotify Playlists + Ranking = Spankify
+
 Vote on songs to reorder spotify playlists
 
 
